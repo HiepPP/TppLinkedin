@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import { makeStyles } from '@material-ui/core/styles';
@@ -36,6 +36,9 @@ const rows = [
 
 export default function Dashboard() {
   const classes = useStyles();
+
+  const [openCreateCampaign, setOpenCampaign] = useState(false);
+
   return (
     <div>
       <div data-tid="backButton">
@@ -50,6 +53,7 @@ export default function Dashboard() {
           color="secondary"
           className={styles.createCampaign}
           startIcon={<AddIcon />}
+          onClick={() => setOpenCampaign(true)}
         >
           Create campaign
         </Button>
@@ -81,7 +85,11 @@ export default function Dashboard() {
         </TableContainer>
       </SimplePaper>
 
-      <CommonDialog>
+      <CommonDialog
+        open={openCreateCampaign}
+        handleClose={() => setOpenCampaign(!openCreateCampaign)}
+        title="Create Campaign"
+      >
         <CreateCampaignDialog />
       </CommonDialog>
     </div>

@@ -14,7 +14,9 @@ export default function CommonDialog({ handleClose, title, children, open }) {
       onClose={handleClose}
       aria-labelledby="form-dialog-title"
     >
-      <DialogTitle id="form-dialog-title">{title}</DialogTitle>
+      <DialogTitle id="form-dialog-title" style={{ color: 'black' }}>
+        {title}
+      </DialogTitle>
       <DialogContent>{children}</DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
